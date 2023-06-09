@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(27, 3, 71);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#left, #right{
+    width: 300px;
+    min-height: 400px;
+    margin: 20px;
+    border: 2px dashed rgb(245, 244, 244);
+}
+
+#resetButton{
+    height: 30px;
+    width: 70px;
+    background-color: rgb(156, 40, 40);
+    color: white;
+}
+
+.list{
+    background: #eb2c45;
+    height: 60px;
+    margin: 30px;
+    color: rgb(245, 244, 244);
+    display: flex;
+    align-items: center;
+    cursor: grab;
+}

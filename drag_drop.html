@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Drag and Drop</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div id="left">
+                <div class="list" draggable="true"><p style="margin-left: 40%;">Item 1</p></div>
+                <div class="list" draggable="true"><p style="margin-left: 40%;">Item 2</p></div>
+                <div class="list" draggable="true"><p style="margin-left: 40%;">Item 3</p></div>
+                <div class="list" draggable="true"><p style="margin-left: 40%;">Item 4</p></div>
+            </div>
+            <div id="right"></div>
+            <button id="resetButton" class="reset-button" onclick="reset()">Reset</button>
+        </div>
+
+        <script>
+            let lists = document.getElementsByClassName("list");
+            let rightbox = document.getElementById("right");
+            let leftbox = document.getElementById("left");
+            const resetButton = document.getElementById('resetButton');
+
+            resetButton.addEventListener('click', reset);
+
+            //function for reset button
+            function reset() {
+                rightbox.innerHTML = '<p style="margin: 20px;color: white;">Reset success</p>';
+                setTimeout(myurl,700);     //reset message diappear after 700 milliseconds
+            }
+
+            //functions for alert messages after adding from one conatainer to another AND after reset
+            function myurl(){
+                document.location.href = 'drag_drop.html'
+            }
+            function mymsg(){
+                window.alert("Item dropped successfully");
+            }
+            
+            for(list of lists){
+                list.addEventListener("dragstart", function(e){
+                    let selected = e.target;
+
+                     //to drag and drop element from left container to right
+                    rightbox.addEventListener("dragover",function(e){
+                        e.preventDefault();
+                    });
+                    rightbox.addEventListener("drop",function(e){
+                        rightbox.appendChild(selected);
+                        setTimeout(mymsg);   
+                        selected.style.color = "yellow";
+                        selected = null;
+                    });
+
+                    //to drag and drop element from right container to left
+                    leftbox.addEventListener("dragover",function(e){
+                        e.preventDefault();
+                    });
+                    leftbox.addEventListener("drop",function(e){
+                        leftbox.appendChild(selected);
+                        selected.style.color = " rgb(245, 244, 244)";
+                        selected = null;
+                    });
+                })
+            }
+            
+
+
+            
+        </script>
+    </body>
+</html>
